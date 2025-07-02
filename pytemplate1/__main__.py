@@ -76,46 +76,42 @@ def interactive():
             line = click.prompt(">>>", type=str, prompt_suffix=" ").strip()
             if line.lower() in ["exit", "quit"]:
                 break
-
-            parts = line.split()
-            if len(parts) != 3:
-                click.echo("Invalid input. Usage: <command> <num1> <num2>")
-                continue
-
-            command = parts[0].lower()
-            try:
-                num1 = float(parts[1])
-                num2 = float(parts[2])
-            except ValueError:
-                click.echo("Invalid numbers. Please enter numeric values.")
-                continue
-
-            if command == "add":
-                result = calc.add(num1, num2)
-                click.echo(f"Result: {result}")
-            elif command == "sub":
-                result = calc.sub(num1, num2)
-                click.echo(f"Result: {result}")
-            elif command == "mul":
-                result = calc.mul(num1, num2)
-                click.echo(f"Result: {result}")
-            elif command == "div":
-                try:
-                    result = calc.div(num1, num2)
-                    click.echo(f"Result: {result}")
-                except ValueError as e:
-                    click.echo(f"Error: {e}")
-            else:
-                click.echo(f"Unknown command: {command}")
-
+            _process_interactive_command(line, calc)
         except Exception as e:
             click.echo(f"An unexpected error occurred: {e}")
 
 
-if __name__ == "__main__":
-    cli()
+def _process_interactive_command(line, calc):
+    parts = line.split()
+    if len(parts) != 3:
+        click.echo("Invalid input. Usage: <command> <num1> <num2>")
+        return
+
+    command = parts[0].lower()
+    try:
+        num1 = float(parts[1])
+        num2 = float(parts[2])
+    except ValueError:
+        click.echo("Invalid numbers. Please enter numeric values.")
+        return
+
+    if command == "add":
+        result = calc.add(num1, num2)
+        click.echo(f"Result: {result}")
+    elif command == "sub":
+        result = calc.sub(num1, num2)
+        click.echo(f"Result: {result}")
+    elif command == "mul":
+        result = calc.mul(num1, num2)
+        click.echo(f"Result: {result}")
+    elif command == "div":
+        try:
+            result = calc.div(num1, num2)
+            click.echo(f"Result: {result}")
+        except ValueError as e:
+            click.echo(f"Error: {e}")
+    else:
+        click.echo(f"Unknown command: {command}")
 
 
 
-if __name__ == "__main__":
-    cli()
