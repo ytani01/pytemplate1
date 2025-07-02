@@ -27,6 +27,26 @@ pip install pytemplate1
    ```
 4. 開発を開始します。
 
+### 自動テストの実行
+
+プロジェクトのルートディレクトリで以下のコマンドを実行すると、すべてのテストが実行されます。
+
+```bash
+source .venv/bin/activate
+pytest
+```
+
+### コードの整形とリンティング
+
+`ruff` を使用してコードの整形とリンティングを行います。以下のコマンドを実行してください。
+
+```bash
+source .venv/bin/activate
+ruff format .
+ruff check .
+```
+
+
 ## コマンドとしての利用方法
 
 仮想環境をアクティベートした後、以下のコマンドで利用できます。
@@ -64,3 +84,7 @@ print(result)
 result = calc.div(6, 2)
 print(result)
 ```
+
+## ライセンス
+
+このプロジェクトはMITライセンスの下で公開されています。詳細はLICENSEファイルを参照してください。
