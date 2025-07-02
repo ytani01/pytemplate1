@@ -1,0 +1,30 @@
+[project]
+name = "pytemplate1"
+version = "0.1.0"
+description = "Python library template."
+readme = "README.md"
+authors = [
+    { name = "Author Name", email = "email@author.jp" }
+]
+license = "MIT"
+requires-python = ">=3.13"
+dependencies = [
+    "click"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.pytest.ini_options]
+pythonpath = "."
